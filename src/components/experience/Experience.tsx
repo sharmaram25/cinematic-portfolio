@@ -32,14 +32,13 @@ const experiences = [
 
 export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<SVGPathElement>(null);
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const linePathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const line = lineRef.current;
+      const line = linePathRef.current;
       
-      // Draw the line as we scroll
+      // 1. The God Thread Animation
       if (line) {
         const length = line.getTotalLength();
         gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
@@ -52,30 +51,35 @@ export default function Experience() {
             start: "top center",
             end: "bottom center",
             scrub: 1,
+            // markers: true, // debug
           },
         });
       }
 
-      // Reveal items
-      itemsRef.current.forEach((item) => {
-        if (item) {
-          gsap.fromTo(
-            item,
-            { opacity: 0, x: -50 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 1,
-              scrollTrigger: {
-                trigger: item,
-                start: "top 80%",
-                end: "bottom 60%",
-                toggleActions: "play reverse play reverse",
-              },
-            }
-          );
-        }
+      // 2. Text & Beam Animation
+      const items = gsap.utils.toArray(".experience-item");
+      items.forEach((item: any, i) => {
+        const content = item.querySelector(".content");
+        const beam = item.querySelector(".beam");
+        const dot = item.querySelector(".dot");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 70%",
+            toggleActions: "play reverse play reverse",
+          }
+        });
+
+        // Animate Dot
+        tl.fromTo(dot, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(1.7)" })
+        // Shoot Beam
+          .fromTo(beam, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, "-=0.2")
+        // Reveal Text
+          .fromTo(content, { opacity: 0, x: i % 2 === 0 ? -20 : 20 }, { opacity: 1, x: 0, duration: 0.5 }, "-=0.3");
+          
       });
+
     }, containerRef);
 
     return () => ctx.revert();
@@ -86,75 +90,103 @@ export default function Experience() {
       ref={containerRef}
       className="relative min-h-screen py-32 bg-zinc-950 text-white overflow-hidden"
     >
-      <div className="absolute top-10 left-10 md:left-20">
-         <h2 className="text-gold text-sm tracking-[0.3em] uppercase">Journey</h2>
+      <div className="absolute top-10 left-6 md:left-20 z-20">
+         <h2 className="text-gold text-sm tracking-[0.5em] uppercase font-bold">Timeline</h2>
       </div>
 
-      <div className="max-w-6xl mx-auto relative px-6 md:px-0">
+      <div className="max-w-7xl mx-auto relative px-4 md:px-0">
         
-        {/* SVG Curve Line Container */}
-        <div className="absolute top-0 left-4 md:left-1/2 w-1 h-full -translate-x-1/2 hidden md:block z-0">
-          <svg
-            className="h-full w-[400px] -ml-[200px] overflow-visible"
-            preserveAspectRatio="none"
-          >
-             {/* 
-                Simplified path: straight line down the middle with some sine waves. 
-                In a real SVG we'd calculate points dynamically or use a fixed curve.
-                Here using a straight line for robustness in this prompt context, but styled as a "gold thread".
-                Or a slight curve.
-             */}
-            <path
-              ref={lineRef}
-              d="M 200 0 Q 300 300 200 600 T 200 1200"
-              fill="none"
-              stroke="#FFD700"
-              strokeWidth="2"
-              className="drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]"
-            />
-          </svg>
+        {/* SVG Curve Container - Full Screen Width for dramatic curves */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 hidden md:block overflow-visible">
+            <svg 
+                className="w-full h-full overflow-visible" 
+                viewBox="0 0 1440 1800" 
+                preserveAspectRatio="xMidYMin slice"
+            >
+                <defs>
+                    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#FFD700" stopOpacity="0" />
+                        <stop offset="15%" stopColor="#FFD700" stopOpacity="1" />
+                        <stop offset="85%" stopColor="#FFD700" stopOpacity="1" />
+                        <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
+                    </linearGradient>
+                </defs>
+                
+                {/* 
+                    Corrected Bezier:
+                    Starts VERTICAL (Control point x=720) to avoid "abrupt" header cut.
+                    Weaves left, then right, then ends VERTICAL.
+                */}
+                <path
+                    ref={linePathRef}
+                    d="M 720 0 C 720 300, 200 600, 720 1000 S 720 1700, 720 2000"
+                    fill="none"
+                    stroke="url(#line-gradient)"
+                    strokeWidth="4"
+                    className="drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]"
+                    vectorEffect="non-scaling-stroke"
+                />
+            </svg>
         </div>
+        
+        {/* Straight Line for Mobile */}
+        <div className="absolute top-0 left-6 bottom-0 w-[2px] bg-white/10 md:hidden" />
 
-        {/* Vertical Line for Mobile */}
-        <div className="absolute top-0 left-6 bottom-0 w-[1px] bg-white/10 md:hidden"></div>
-
-        <div className="space-y-32 md:space-y-48 relative z-10">
+        <div className="space-y-32 relative z-10 pt-20">
           {experiences.map((exp, i) => (
             <div
               key={i}
-              ref={(el) => {
-                 itemsRef.current[i] = el;
-              }}
-              className={`flex flex-col md:flex-row items-center ${
+              className={`flex flex-col md:flex-row items-center experience-item relative ${
                 i % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
-              {/* Spacer/Connector Node */}
-              <div className="hidden md:flex w-full md:w-1/2 justify-center items-center">
-                 <div className="w-4 h-4 bg-black border-2 border-gold rounded-full relative shadow-[0_0_15px_rgba(255,165,0,0.8)]">
-                    <div className="absolute inset-0 bg-gold animate-ping opacity-20 rounded-full"/>
-                 </div>
-              </div>
+                {/* Center Anchor Point (Hidden on mobile, used for desktop alignment) */}
+               <div className="hidden md:flex w-1/2 justify-center items-center relative">
+                   {/* The Dot on the Line */}
+                   <div className={`dot w-4 h-4 rounded-full bg-black border-2 border-gold absolute ${i % 2 === 0 ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"}`} style={{ left: '50%', transform: 'translateX(-50%)' }}></div>
+               </div>
 
-              {/* Content Card */}
-              <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${
-                  i % 2 === 0 ? "md:pr-20 md:text-right" : "md:pl-20 md:text-left"
+              {/* Content Side */}
+              <div className={`w-full md:w-1/2 relative ${
+                  i % 2 === 0 ? "md:pr-24 md:text-right" : "md:pl-24 md:text-left text-left pl-12"
               }`}>
-                <span className="text-orange text-xs tracking-widest uppercase mb-2 block">{exp.period}</span>
-                <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">{exp.role}</h3>
-                <h4 className="text-xl text-gray-400 mb-6 font-light">{exp.company}</h4>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed opacity-80">{exp.desc}</p>
                 
-                {/* Skills as "Earned" Tokens */}
-                <div className={`flex flex-wrap gap-3 ${
-                    i % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                }`}>
-                  {exp.skills.map((skill, s) => (
-                    <span key={s} className="px-3 py-1 border border-white/20 rounded-full text-xs text-gold uppercase tracking-wider hover:bg-gold hover:text-black transition-colors duration-300 cursor-default">
-                      {skill}
+                {/* Connection Beam (Desktop) */}
+                <div 
+                    className={`beam hidden md:block absolute top-8 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent w-20 opacity-50
+                    ${i % 2 === 0 ? "right-0 origin-right" : "left-0 origin-left"}
+                    `}
+                />
+
+                <div className="content">
+                    <span className="text-orange font-mono text-xs tracking-widest uppercase mb-3 block">
+                        {exp.period}
                     </span>
-                  ))}
+
+                    <h3 className="text-5xl md:text-6xl font-black text-white mb-2 leading-tight uppercase hover:text-gold transition-colors duration-300">
+                        {exp.role}
+                    </h3>
+                    
+                    <h4 className="text-lg md:text-xl font-light text-zinc-400 mb-6 tracking-wide">
+                        {exp.company}
+                    </h4>
+
+                    <p className="text-zinc-300 leading-relaxed max-w-md ml-auto mr-auto md:ml-0 md:mr-0 opacity-80">
+                        {exp.desc}
+                    </p>
+
+                    {/* Minimal Skills - No borders, just clean text */}
+                    <div className={`flex flex-wrap gap-x-6 gap-y-2 mt-6 ${
+                        i % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                    }`}>
+                        {exp.skills.map((skill, s) => (
+                            <span key={s} className="text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-white transition-colors cursor-default">
+                                / {skill}
+                            </span>
+                        ))}
+                    </div>
                 </div>
+
               </div>
             </div>
           ))}
