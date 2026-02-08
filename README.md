@@ -12,13 +12,33 @@ I created this project as a robust, open-source foundation for developers who wa
 
 ## ✨ Key Features
 
-- **"Titan" Hero Section**: A massive, cinematic typography-driven opening with 3D parallax and "God Ray" lighting effects.
-- **"Alive" Interactions**: Mouse-driven parallax, magnetic buttons, and ambient cursor effects.
-- **Performance First**: Smooth scrolling via **Lenis**, optimized images, and GPU-accelerated animations.
-- **Horizontal Project Gallery**: A unique, scroll-triggered horizontal showcase for projects with interactive "cutout" visuals.
-- **"Connectivity Hub"**: A minimalist, classy contact section replacing traditional forms with interactive nodes.
-- **Tech Arsenal**: A game-inspired, grid-based skills display.
-- **Responsive**: Fully optimized for mobile, tablet, and desktop experiences with distinct layouts for each.
+## ✨ Key Features
+
+### 1. "Titan" Hero Layout
+
+- **Split Grid System**: A strict 7-column (typography) / 5-column (image) grid ensures your name and image never overlap, maintaining a perfect magazine-style composition on all screen sizes.
+- **Scramble Effect**: A custom hook (`useScramble`) decrypts your name with a "Cyber Warp" effect, settling into a solid state.
+- **Parallax**: Mouse-driven 3D parallax adds depth to the background layers without compromising performance.
+
+### 2. Titan Precision Cursor
+
+- **Physics Engine**: Abandoning standard CSS transitions for a custom GSAP ticker loop.
+- **Squash & Stretch**: The cursor elongates based on velocity, giving a "warp speed" feel as you move.
+- **Interactive States**:
+  - _Default_: Gold Diamond + Rotating Tech Ring.
+  - _Hover_: The Diamond expands and locks on, while the ring snaps tight.
+
+### 3. Connectivity Hub
+
+- **No Forms**: Replaced generic contact forms with a "Direct Connect" philosophy.
+- **Magnetic Core**: The email button uses magnetic physics to pull towards your cursor.
+- **Orbiting Nodes**: Social links orbit the core, pulsing with ambient light.
+
+### 4. Performance First
+
+- **Lenis Scrolling**: Smooth, momentum-based scrolling that feels heavy and premium.
+- **GPU Acceleration**: All animations use `transform` and `opacity` to avoid layout thrashing.
+- **Dynamic Loading**: Heavy assets are loaded intelligently to keep the TTI (Time to Interactive) low.
 
 ## 🛠️ Tech Stack
 
