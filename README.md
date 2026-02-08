@@ -104,5 +104,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
+---
+
 **Created for the Community by [Ram Sharma](https://twitter.com/ram_dev).**
 _Crafted with precision code._
