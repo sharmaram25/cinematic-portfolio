@@ -12,8 +12,6 @@ I created this project as a robust, open-source foundation for developers who wa
 
 ## ✨ Key Features
 
-## ✨ Key Features
-
 ### 1. "Titan" Hero Layout
 
 - **Split Grid System**: A strict 7-column (typography) / 5-column (image) grid ensures your name and image never overlap, maintaining a perfect magazine-style composition on all screen sizes.
@@ -22,7 +20,7 @@ I created this project as a robust, open-source foundation for developers who wa
 
 ### 2. Titan Precision Cursor
 
-- **Physics Engine**: Abandoning standard CSS transitions for a custom GSAP ticker loop.
+- **Physics Engine**: Abandoning standard CSS transitions for a custom GSAP ticker loop to ensure zero lag.
 - **Squash & Stretch**: The cursor elongates based on velocity, giving a "warp speed" feel as you move.
 - **Interactive States**:
   - _Default_: Gold Diamond + Rotating Tech Ring.
@@ -119,10 +117,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-
----
-
----
 
 ---
 
