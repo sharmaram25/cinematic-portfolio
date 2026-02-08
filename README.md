@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cinematic Developer Portfolio ⚡
 
-## Getting Started
+A high-performance, immersive developer portfolio template built with **Next.js 14**, **Tailwind CSS**, and **GSAP**. Designed for software engineers who want to showcase their work with a premium, "living" aesthetic.
 
-First, run the development server:
+![Portfolio Preview](public/preview.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **"Titan" Hero Section**: A massive, cinematic typography-driven opening with 3D parallax and "God Ray" lighting effects.
+- **"Alive" Interactions**: Mouse-driven parallax, magnetic buttons, and ambient cursor effects.
+- **Performance First**: Smooth scrolling via **Lenis**, optimized images, and GPU-accelerated animations.
+- **Horizontal Project Gallery**: A unique, scroll-triggered horizontal showcase for projects with interactive "cutout" visuals.
+- **"Connectivity Hub"**: A minimalist, classy contact section replacing traditional forms with interactive nodes.
+- **Tech Arsenal**: A game-inspired, grid-based skills display.
+- **Responsive**: Fully optimized for mobile, tablet, and desktop experiences with distinct layouts for each.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, TypeScript)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animation**:
+  - [GSAP](https://gsap.com/) (ScrollTrigger, Flip)
+  - [Lenis](https://lenis.darkroom.engineering/) (Smooth Scroll)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Fonts**: Inter (Google Fonts)
 
-## Learn More
+## 🚀 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18+
+- npm or yarn
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1.  **Clone the repository**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    git clone https://github.com/sharmaram25/cinematic-portfolio.git
+    cd cinematic-portfolio
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  **Install dependencies**:
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) (or port 8080 if configured) to view it in the browser.
+
+## 🎨 Customization
+
+### 1. Hero Image
+
+Replace `public/ram.webp` with your own cutout image. Ensure it is a high-resolution transparent PNG/WEBP.
+
+- **Tip**: Use a drop shadow on your PNG for better depth integration.
+
+### 2. Personal Styling
+
+Adjust colors in `src/app/globals.css` or `tailwind.config.ts`. The project uses a semantic color system:
+
+- `gold`: Primary accent
+- `zinc-950`: Background base
+
+### 3. Project Data
+
+Update `src/components/projects/Projects.tsx` with your own case studies. The layout automatically handles horizontal scrolling logic.
+
+### 4. Contact Links
+
+Modify `src/components/contact/Contact.tsx` to update your email and social handles.
+
+## 📦 Deployment
+
+This project is optimized for deployment on **Vercel**.
+
+1.  Push your code to GitHub.
+2.  Import the project into Vercel.
+3.  Vercel will automatically detect Next.js settings.
+4.  Hit **Deploy**.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Based on the "Cinematic" design language. Built with ❤️ by [Ram Sharma](https://github.com/sharmaram25).
