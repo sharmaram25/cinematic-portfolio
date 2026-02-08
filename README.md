@@ -1,10 +1,16 @@
-# Cinematic Developer Portfolio ⚡
+# Cinematic Developer Portfolio Template ⚡
 
-A high-performance, immersive developer portfolio template built with **Next.js 14**, **Tailwind CSS**, and **GSAP**. Designed for software engineers who want to showcase their work with a premium, "living" aesthetic.
+A high-performance, immersive developer portfolio template built for the community by **Ram Sharma**.
+
+Designed with **Next.js 14**, **Tailwind CSS**, and **GSAP**, this template helps software engineers showcase their work with a premium, "living" aesthetic.
 
 ![Portfolio Preview](public/preview.png)
 
-## 🌟 Key Features
+## 🌟 Introduction
+
+This project was created by [Ram Sharma](https://github.com/sharmaram25) as a robust, open-source foundation for developers who want to stand out. It goes beyond static sites, offering a "Titan" design language that feels alive.
+
+## ✨ Key Features
 
 - **"Titan" Hero Section**: A massive, cinematic typography-driven opening with 3D parallax and "God Ray" lighting effects.
 - **"Alive" Interactions**: Mouse-driven parallax, magnetic buttons, and ambient cursor effects.
@@ -96,4 +102,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Based on the "Cinematic" design language. Built with ❤️ by [Ram Sharma](https://github.com/sharmaram25).
+---
+
+**Created for the Community by [Ram Sharma](https://twitter.com/ram_dev).**
+_Crafted with precision code._

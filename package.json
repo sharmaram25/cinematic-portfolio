@@ -1,6 +1,8 @@
 {
   "name": "cinematic-portfolio",
   "version": "0.1.0",
+  "description": "A cinematic developer portfolio template by Ram Sharma",
+  "author": "Ram Sharma <ram@example.com>",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8080",
