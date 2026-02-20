@@ -44,7 +44,7 @@ export default function Contact() {
           {/* Left: Heading/Invitation */}
           <div className="flex-1">
              <h2 className="contact-line text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tighter mb-8">
-                LET'S <br/>
+                LET&apos;S <br/>
                 <span className="text-gold italic font-serif">CREATE</span> <br/>
                 TOGETHER.
              </h2>

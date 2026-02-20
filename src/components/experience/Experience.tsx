@@ -58,14 +58,15 @@ export default function Experience() {
 
       // 2. Text & Beam Animation
       const items = gsap.utils.toArray(".experience-item");
-      items.forEach((item: any, i) => {
-        const content = item.querySelector(".content");
-        const beam = item.querySelector(".beam");
-        const dot = item.querySelector(".dot");
+      items.forEach((item: unknown, i) => {
+        const el = item as HTMLElement;
+        const content = el.querySelector(".content");
+        const beam = el.querySelector(".beam");
+        const dot = el.querySelector(".dot");
 
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: item,
+            trigger: el,
             start: "top 70%",
             toggleActions: "play reverse play reverse",
           }

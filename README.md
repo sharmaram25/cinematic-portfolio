@@ -8,6 +8,8 @@ Designed with **Next.js 14**, **Tailwind CSS**, and **GSAP**, this template help
 
 ## 🌟 Introduction
 
+> **Live Demo:** [https://cinematic-portfolio-template.netlify.app/](https://cinematic-portfolio-template.netlify.app/)
+
 I created this project as a robust, open-source foundation for developers who want to stand out. It goes beyond static sites, offering a "Titan" design language that feels alive.
 
 ## ✨ Key Features

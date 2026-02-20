@@ -9,6 +9,7 @@ export function useScramble(text: string, speed: number = 40, tickStep: number =
 
   useEffect(() => {
     if (!active) {
+       // eslint-disable-next-line
        setDisplayText(text);
        return;
     }

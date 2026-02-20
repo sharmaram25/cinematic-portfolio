@@ -63,7 +63,7 @@ export default function About() {
             Where every pixel has a <span className="text-orange">purpose</span>.
           </p>
           <p className="about-line opacity-0 will-change-transform transform-origin-bottom text-xl md:text-2xl text-zinc-500 pt-8 font-mono tracking-widest uppercase">
-             // Ram Sharma • 2026
+             {"// Ram Sharma • 2026"}
           </p>
         </div>
       </div>
